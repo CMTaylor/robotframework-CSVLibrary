@@ -40,7 +40,7 @@ class CSVLibrary(object):
 
                 writer.writerows(data)
             except csv.Error as e:
-                logger.error('file %s, line %d: %s' % (filename, writer.line_num, e))
+                logger.error('file %s, data %s: %s' % (filename, data, e))
 
     @staticmethod
     def empty_csv_file(filename):
@@ -97,7 +97,7 @@ class CSVLibrary(object):
         """This keyword will append data to a new or existing CSV file.
         
         - ``filename``:  name of csv file
-        - ``data``: iterable(e.g. list or tuple) data.
+        - - ``data``: iterable(e.g. list or tuple) of rows of data, each row being an iterable or a dictionary.
         - ``quoting`` (int):
           _0_: QUOTE_MINIMAL
           _1_: QUOTE_ALL
@@ -112,7 +112,7 @@ class CSVLibrary(object):
         """This keyword will create new file
         
         - ``filename``:  name of csv file
-        - ``data``: iterable(e.g. list or tuple) data.
+        - ``data``: iterable(e.g. list or tuple) of rows of data, each row being a dictionary.
         - ``fieldnames``: list of column names
         - ``delimiter``: Default: `,`
         - ``quoting`` (int):
